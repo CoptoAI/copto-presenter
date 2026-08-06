@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavStore } from '../stores/useNavStore';
 import { SectionCategory } from '../types';
 import { getCopticDate } from '../lib/copticCalendar';
@@ -21,8 +21,7 @@ interface CategoryGroup {
 }
 
 export const Sidebar: React.FC = () => {
-  const { category, setCategory, sidebarOpen, selectedDate, uiLanguage } = useNavStore();
-  const [filter, setFilter] = useState('');
+  const { category, setCategory, sidebarOpen, selectedDate, uiLanguage, searchQuery, setSearchQuery } = useNavStore();
 
   const copticDate = getCopticDate(selectedDate);
   const t = translations[uiLanguage];
@@ -96,8 +95,8 @@ export const Sidebar: React.FC = () => {
         <input
           type="text"
           placeholder={t.searchPlaceholder}
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full bg-slate-900/60 border border-slate-700/60 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500"
         />
       </div>
@@ -109,7 +108,7 @@ export const Sidebar: React.FC = () => {
 
           const filteredItems = group.items.filter((item) => {
             const itemLabel = (t as any)[item.labelKey] || item.labelKey;
-            return matchesQuery(itemLabel, filter);
+            return matchesQuery(itemLabel, searchQuery);
           });
 
           if (filteredItems.length === 0) return null;

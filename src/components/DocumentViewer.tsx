@@ -2,12 +2,14 @@ import React, { useEffect, useMemo } from 'react';
 import { useNavStore } from '../stores/useNavStore';
 import { usePresenterStore } from '../stores/usePresenterStore';
 import { buildLiturgicalService } from '../lib/documentBuilder';
+import { matchesQuery } from '../lib/arabicSearch';
 import { LiturgicalItem } from '../types';
 
 export const DocumentViewer: React.FC = () => {
   const {
     category,
     fontSize,
+    searchQuery,
     showCoptic,
     showCopticEngTransliteration,
     showCopticAraTransliteration,
@@ -72,6 +74,19 @@ export const DocumentViewer: React.FC = () => {
               const isActive = idx === activeSlideIndex;
               const roleLabel = item.user ? item.user.english || item.user.coptic || item.user.arabic : item.role;
 
+              const isMatch =
+                !searchQuery ||
+                matchesQuery(item.title?.english, searchQuery) ||
+                matchesQuery(item.title?.arabic, searchQuery) ||
+                matchesQuery(item.title?.coptic, searchQuery) ||
+                matchesQuery(item.text?.english, searchQuery) ||
+                matchesQuery(item.text?.arabic, searchQuery) ||
+                matchesQuery(item.text?.coptic, searchQuery) ||
+                matchesQuery(item.text?.copticTransliterationEng, searchQuery) ||
+                matchesQuery(item.text?.copticTransliterationAra, searchQuery);
+
+              if (!isMatch) return null;
+
               return (
                 <div
                   key={item.id || idx}
@@ -80,7 +95,7 @@ export const DocumentViewer: React.FC = () => {
                     isActive
                       ? 'bg-sky-950/40 border-sky-500/80 shadow-2xl ring-2 ring-sky-500/30'
                       : 'bg-slate-900/40 border-slate-800/80 hover:bg-slate-800/40 hover:border-slate-700'
-                  }`}
+                  } ${searchQuery ? 'ring-1 ring-amber-400/40' : ''}`}
                   style={{ fontSize: `${fontSize}px` }}
                 >
                   {/* Title & Role Badge */}

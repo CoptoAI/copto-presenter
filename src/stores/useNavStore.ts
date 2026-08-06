@@ -8,6 +8,7 @@ export interface NavState {
   selectedDate: Date;
   selectedTime: number; // 0 to 23
   sidebarOpen: boolean;
+  searchQuery: string;
   fontSize: number; // font size in px
   copticFont: 'Avva Shenouda' | 'Coptic Standard' | 'Noto Sans Coptic';
   uiLanguage: UiLanguage;
@@ -23,6 +24,7 @@ export interface NavState {
   setDate: (date: Date) => void;
   setTime: (hour: number) => void;
   toggleSidebar: () => void;
+  setSearchQuery: (query: string) => void;
   setFontSize: (size: number) => void;
   setCopticFont: (font: 'Avva Shenouda' | 'Coptic Standard' | 'Noto Sans Coptic') => void;
   setUiLanguage: (lang: UiLanguage) => void;
@@ -37,6 +39,7 @@ export const useNavStore = create<NavState>((set, get) => ({
   selectedDate: new Date(),
   selectedTime: new Date().getHours(),
   sidebarOpen: true,
+  searchQuery: '',
   fontSize: 24,
   copticFont: 'Avva Shenouda',
   uiLanguage: 'en',
@@ -52,6 +55,7 @@ export const useNavStore = create<NavState>((set, get) => ({
   setDate: (selectedDate) => set({ selectedDate }),
   setTime: (selectedTime) => set({ selectedTime }),
   toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
+  setSearchQuery: (searchQuery) => set({ searchQuery }),
   setFontSize: (fontSize) => {
     set({ fontSize });
     const s = get();
