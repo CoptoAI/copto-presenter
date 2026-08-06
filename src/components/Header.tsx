@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavStore } from '../stores/useNavStore';
 import { resolveLiturgicalSeason } from '../domain/seasonResolver';
+import { translations } from '../i18n/translations';
 import {
   Menu,
   Monitor,
@@ -11,7 +12,8 @@ import {
   BookOpen,
   SlidersHorizontal,
   Sparkles,
-  Maximize2
+  Maximize2,
+  Globe
 } from 'lucide-react';
 
 export const Header: React.FC = () => {
@@ -22,6 +24,8 @@ export const Header: React.FC = () => {
     setFontSize,
     copticFont,
     setCopticFont,
+    uiLanguage,
+    setUiLanguage,
     showCoptic,
     showCopticEngTransliteration,
     showCopticAraTransliteration,
@@ -41,6 +45,7 @@ export const Header: React.FC = () => {
   }, [initOfflinePreferences]);
 
   const season = resolveLiturgicalSeason(selectedDate);
+  const t = translations[uiLanguage];
 
   const handleOpenProjectorWindow = () => {
     window.open(
@@ -64,7 +69,7 @@ export const Header: React.FC = () => {
         <button
           onClick={toggleSidebar}
           className="p-2 rounded-lg hover:bg-slate-700/50 text-slate-200 transition"
-          title="Toggle Navigation Menu"
+          title={t.toggleSidebar}
         >
           <Menu className="w-5 h-5" />
         </button>
@@ -72,7 +77,7 @@ export const Header: React.FC = () => {
           <BookOpen className="w-6 h-6 text-sky-400" />
           <div>
             <h1 className="font-bold text-base tracking-wide hidden sm:block bg-gradient-to-r from-sky-400 to-amber-300 bg-clip-text text-transparent">
-              COPTO PRESENTER
+              {t.appTitle}
             </h1>
             <span className="hidden md:flex items-center gap-1 text-[10px] font-semibold text-amber-400/90">
               <Sparkles className="w-3 h-3 text-amber-400" />
@@ -82,9 +87,35 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Language Visibility Controls (5 Options) */}
-      <div className="flex items-center gap-2">
-        <div className="flex items-center gap-1 bg-slate-900/60 p-1 rounded-xl border border-slate-700/50">
+      {/* UI Language Switcher (EN / عربي) & Content Language Visibility */}
+      <div className="flex items-center gap-3">
+        {/* Web App Interface Language */}
+        <div className="flex items-center gap-1 bg-slate-900/80 p-1 rounded-xl border border-sky-500/40">
+          <Globe className="w-3.5 h-3.5 text-sky-400 ml-1.5 mr-0.5" />
+          <button
+            onClick={() => setUiLanguage('en')}
+            className={`px-2 py-0.5 text-[11px] font-bold rounded-lg transition ${
+              uiLanguage === 'en'
+                ? 'bg-sky-500 text-white shadow'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            EN
+          </button>
+          <button
+            onClick={() => setUiLanguage('ar')}
+            className={`px-2 py-0.5 text-[11px] font-bold rounded-lg transition ${
+              uiLanguage === 'ar'
+                ? 'bg-amber-500 text-slate-950 shadow'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            عربي
+          </button>
+        </div>
+
+        {/* Content Language Toggles (5 Options) */}
+        <div className="hidden sm:flex items-center gap-1 bg-slate-900/60 p-1 rounded-xl border border-slate-700/50">
           <button
             onClick={() => toggleLanguage('coptic')}
             className={`px-2 py-1 text-[11px] font-semibold rounded-lg transition ${
@@ -141,18 +172,6 @@ export const Header: React.FC = () => {
             ARA
           </button>
         </div>
-
-        {/* Font Family Selection */}
-        <select
-          value={copticFont}
-          onChange={(e) => setCopticFont(e.target.value as any)}
-          className="hidden xl:block bg-slate-900/80 border border-slate-700/60 rounded-xl px-2 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500"
-          title="Select Coptic Font Family"
-        >
-          <option value="Avva Shenouda">Font: Avva Shenouda</option>
-          <option value="Coptic Standard">Font: Coptic Standard</option>
-          <option value="Noto Sans Coptic">Font: Noto Sans Coptic</option>
-        </select>
       </div>
 
       {/* Font Size & Theme Settings */}
@@ -166,7 +185,7 @@ export const Header: React.FC = () => {
             value={fontSize}
             onChange={(e) => setFontSize(Number(e.target.value))}
             className="w-20 accent-sky-400 cursor-pointer"
-            title={`Font Size: ${fontSize}px`}
+            title={`${t.fontSize}: ${fontSize}px`}
           />
           <span className="text-xs font-mono w-6 text-slate-300">{fontSize}px</span>
         </div>
@@ -178,7 +197,7 @@ export const Header: React.FC = () => {
             className={`p-1.5 rounded-lg transition ${
               theme === 'dark' ? 'bg-slate-700 text-sky-400' : 'text-slate-400 hover:text-white'
             }`}
-            title="Dark Theme"
+            title={t.themeDark}
           >
             <Moon className="w-4 h-4" />
           </button>
@@ -187,7 +206,7 @@ export const Header: React.FC = () => {
             className={`p-1.5 rounded-lg transition ${
               theme === 'projector' ? 'bg-slate-700 text-amber-400' : 'text-slate-400 hover:text-white'
             }`}
-            title="Projector High-Contrast Mode"
+            title={t.themeProjector}
           >
             <Tv className="w-4 h-4" />
           </button>
@@ -196,7 +215,7 @@ export const Header: React.FC = () => {
             className={`p-1.5 rounded-lg transition ${
               theme === 'light' ? 'bg-slate-700 text-amber-400' : 'text-slate-400 hover:text-white'
             }`}
-            title="Light Theme"
+            title={t.themeLight}
           >
             <Sun className="w-4 h-4" />
           </button>
@@ -207,7 +226,7 @@ export const Header: React.FC = () => {
           <button
             onClick={toggleFullscreen}
             className="p-2 rounded-xl bg-slate-900/60 border border-slate-700/50 text-slate-300 hover:text-white transition"
-            title="Toggle Fullscreen Mode"
+            title={t.fullscreen}
           >
             <Maximize2 className="w-4 h-4" />
           </button>
@@ -220,15 +239,15 @@ export const Header: React.FC = () => {
             }`}
           >
             <SlidersHorizontal className="w-4 h-4" />
-            <span className="hidden sm:inline">Presenter Control</span>
+            <span className="hidden sm:inline">{t.presenterControl}</span>
           </button>
           <button
             onClick={handleOpenProjectorWindow}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 transition shadow-lg font-bold"
-            title="Open Fullscreen Projector Display Window for Second Monitor"
+            title={t.launchProjector}
           >
             <Monitor className="w-4 h-4" />
-            <span className="hidden sm:inline">Launch Projector</span>
+            <span className="hidden sm:inline">{t.launchProjector}</span>
           </button>
         </div>
       </div>

@@ -4,19 +4,21 @@ import { usePresenterStore } from '../stores/usePresenterStore';
 import { useBroadcastSync } from '../hooks/useBroadcastSync';
 import { buildLiturgicalService } from '../lib/documentBuilder';
 import { LiturgicalItem } from '../types';
+import { translations } from '../i18n/translations';
 import {
   ChevronLeft,
   ChevronRight,
-  Monitor,
   Tv,
   Eye,
   ArrowRight
 } from 'lucide-react';
 
 export const OperatorControls: React.FC = () => {
-  const { category, theme, setTheme } = useNavStore();
-  const { activeSlideIndex, setActiveSlide, nextSlide, prevSlide, fontSize, setCategoryAndResetSlide } = usePresenterStore();
+  const { category, uiLanguage } = useNavStore();
+  const { activeSlideIndex, setActiveSlide, nextSlide, prevSlide } = usePresenterStore();
   const { broadcastState } = useBroadcastSync('operator');
+
+  const t = translations[uiLanguage];
 
   const sections = useMemo(() => buildLiturgicalService(category), [category]);
 
@@ -55,9 +57,9 @@ export const OperatorControls: React.FC = () => {
             <Tv className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="font-bold text-base text-slate-100">Presenter Control Center (Screen 1)</h2>
+            <h2 className="font-bold text-base text-slate-100">{t.presenterControl}</h2>
             <p className="text-xs text-slate-400">
-              Active Slide: {activeSlideIndex + 1} / {allItems.length}
+              {t.activeSlide}: {activeSlideIndex + 1} / {allItems.length}
             </p>
           </div>
         </div>
@@ -70,14 +72,14 @@ export const OperatorControls: React.FC = () => {
             className="flex items-center gap-1.5 px-4 py-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition"
           >
             <ChevronLeft className="w-4 h-4" />
-            Previous
+            {t.previous}
           </button>
           <button
             onClick={handleNext}
             disabled={activeSlideIndex >= allItems.length - 1}
             className="flex items-center gap-1.5 px-5 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold rounded-xl shadow-lg transition"
           >
-            Next Slide
+            {t.nextSlide}
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
@@ -90,7 +92,7 @@ export const OperatorControls: React.FC = () => {
           <div className="flex items-center justify-between pb-3 border-b border-amber-500/30">
             <div className="flex items-center gap-2 text-amber-400 font-bold text-xs uppercase tracking-wider">
               <Eye className="w-4 h-4" />
-              <span>LIVE PROJECTOR OUTPUT (Slide #{activeSlideIndex + 1})</span>
+              <span>{t.liveOutput} (#{activeSlideIndex + 1})</span>
             </div>
           </div>
 
@@ -126,7 +128,7 @@ export const OperatorControls: React.FC = () => {
           <div className="flex items-center justify-between pb-3 border-b border-slate-700">
             <div className="flex items-center gap-2 text-slate-400 font-bold text-xs uppercase tracking-wider">
               <ArrowRight className="w-4 h-4 text-sky-400" />
-              <span>UPCOMING SLIDE PREVIEW</span>
+              <span>{t.upcomingPreview}</span>
             </div>
           </div>
 
@@ -154,7 +156,7 @@ export const OperatorControls: React.FC = () => {
       {/* Slide Thumbnails List */}
       <div className="glass-panel p-4 flex flex-col gap-3">
         <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-          All Slides in Section ({allItems.length})
+          {t.allSlides} ({allItems.length})
         </h3>
         <div className="flex gap-3 overflow-x-auto pb-2">
           {allItems.map((item, idx) => {

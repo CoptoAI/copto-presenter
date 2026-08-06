@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { SectionCategory } from '../types';
+import { UiLanguage } from '../i18n/translations';
 import { savePreferences, loadPreferences } from '../lib/offlineStorage';
 
 export interface NavState {
@@ -9,6 +10,7 @@ export interface NavState {
   sidebarOpen: boolean;
   fontSize: number; // font size in px
   copticFont: 'Avva Shenouda' | 'Coptic Standard' | 'Noto Sans Coptic';
+  uiLanguage: UiLanguage;
   showCoptic: boolean;
   showCopticEngTransliteration: boolean;
   showCopticAraTransliteration: boolean;
@@ -23,6 +25,7 @@ export interface NavState {
   toggleSidebar: () => void;
   setFontSize: (size: number) => void;
   setCopticFont: (font: 'Avva Shenouda' | 'Coptic Standard' | 'Noto Sans Coptic') => void;
+  setUiLanguage: (lang: UiLanguage) => void;
   toggleLanguage: (lang: 'coptic' | 'copticEng' | 'copticAra' | 'english' | 'arabic') => void;
   setTheme: (theme: 'dark' | 'light' | 'projector' | 'sepia') => void;
   setActiveView: (view: 'app' | 'operator' | 'projector') => void;
@@ -36,6 +39,7 @@ export const useNavStore = create<NavState>((set, get) => ({
   sidebarOpen: true,
   fontSize: 24,
   copticFont: 'Avva Shenouda',
+  uiLanguage: 'en',
   showCoptic: true,
   showCopticEngTransliteration: false,
   showCopticAraTransliteration: false,
@@ -71,6 +75,11 @@ export const useNavStore = create<NavState>((set, get) => ({
       theme: s.theme,
       fontFamily: copticFont
     });
+  },
+  setUiLanguage: (uiLanguage) => {
+    set({ uiLanguage });
+    document.documentElement.dir = uiLanguage === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = uiLanguage;
   },
   toggleLanguage: (lang) =>
     set((state) => {
