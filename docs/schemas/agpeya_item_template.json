@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CoptoPresenterAgpeyaItem",
+  "description": "Standardized Copto Presenter JSON Schema for Agpeya (Book of Hours) Prayers, Psalms, and Litanies",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "agpeya_1st_hour_come_let_us_kneel"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["prayer", "psalm", "gospel", "litany", "absolution", "rubric"],
+      "example": "prayer"
+    },
+    "role": {
+      "type": "string",
+      "enum": ["all", "priest", "deacon", "people", "reader"],
+      "example": "people"
+    },
+    "title": {
+      "type": "object",
+      "properties": {
+        "coptic": { "type": "string", "example": "Ⲁⲙⲱⲓⲛⲓ ⲛⲧⲉⲛⲟⲩⲱϣⲧ" },
+        "copticTransliterationEng": { "type": "string", "example": "Amwini ntenouwsht" },
+        "copticTransliterationAra": { "type": "string", "example": "أمويني إنتينؤوشت" },
+        "english": { "type": "string", "example": "Come Let Us Kneel Down" },
+        "arabic": { "type": "string", "example": "هلم بنا نسجد" }
+      }
+    },
+    "rubric": {
+      "type": "object",
+      "properties": {
+        "english": { "type": "string", "example": "The worshipper bows three times saying:" },
+        "arabic": { "type": "string", "example": "يسجد المصلي ثلاث سجدات قائلاً:" }
+      }
+    },
+    "text": {
+      "type": "object",
+      "properties": {
+        "coptic": {
+          "type": "array",
+          "items": { "type": "string" },
+          "example": [
+            "Ⲁⲙⲱⲓⲛⲓ ⲛⲧⲉⲛⲟⲩⲱϣⲧ: ⲛⲧⲉⲛϯϩⲟ ⲉⲠⲭⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲛⲟⲩϯ.",
+            "Ⲁⲙⲱⲓⲛⲓ ⲛⲧⲉⲛⲟⲩⲱϣⲧ: ⲛⲧⲉⲛⲧⲱⲃϩ ⲙⲠⲭⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲟⲩⲣⲟ."
+          ]
+        },
+        "copticTransliterationEng": {
+          "type": "array",
+          "items": { "type": "string" },
+          "example": [
+            "Amwini ntenouwsht: ntentiho ePkhristos Pennouti.",
+            "Amwini ntenouwsht: ntentobh mPkhristos Penouro."
+          ]
+        },
+        "copticTransliterationAra": {
+          "type": "array",
+          "items": { "type": "string" },
+          "example": [
+            "أمويني إنتينؤوشت: إنتينتيهو إبخرستوس بيننوتي.",
+            "أمويني إنتينؤوشت: إنتينطوبح إمبخرستوس بينؤرو."
+          ]
+        },
+        "english": {
+          "type": "array",
+          "items": { "type": "string" },
+          "example": [
+            "Come let us kneel down, let us ask Christ our God.",
+            "Come let us kneel down, let us beseech Christ our King.",
+            "Come let us kneel down, let us entreat Christ our Savior."
+          ]
+        },
+        "arabic": {
+          "type": "array",
+          "items": { "type": "string" },
+          "example": [
+            "هلم بنا نسجد، نطلب من المسيح إلهنا.",
+            "هلم بنا نسجد، نتضرع إلى المسيح ملكنا.",
+            "هلم بنا نسجد، نتوسل إلى المسيح مخلصنا."
+          ]
+        }
+      },
+      "required": ["english", "arabic"]
+    }
+  },
+  "required": ["type", "text"]
+}

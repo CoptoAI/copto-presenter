@@ -1,1 +1,57 @@
-{"title": {"eng": "Come Let us Kneel Down", "ara": ""}, "items": [{"text": {"eng": ["Come let us kneel down, let us ask Christ our God.", "Come let us kneel down, let us beseech Christ our King.", "Come let us kneel down, let us entreat Christ our Savior.", "O Lord Jesus Christ, the Word of God, our God, through the intercessions of St. Mary, preserve us, and bring us to a good start. Have mercy on us according to Your will forever.", "The night has passed away; we thank You, O Lord, and we ask You to keep us this day away from sin and deliver us."], "ara": ["", "", "", "", ""]}}]}
+{
+  "id": "agpeya_1st_hour_come_let_us_kneel",
+  "type": "prayer",
+  "role": "all",
+  "title": {
+    "coptic": "Ⲁⲙⲱⲓⲛⲓ ⲛⲧⲉⲛⲟⲩⲱϣⲧ",
+    "copticTransliterationEng": "Amwini ntenouwsht",
+    "copticTransliterationAra": "أمويني إنتينؤوشت",
+    "english": "Come Let Us Kneel Down",
+    "arabic": "هلم بنا نسجد"
+  },
+  "rubric": {
+    "english": "The worshipper bows three times saying:",
+    "arabic": "يسجد المصلي ثلاث سجدات قائلاً:"
+  },
+  "items": [
+    {
+      "text": {
+        "coptic": [
+          "Ⲁⲙⲱⲓⲛⲓ ⲛⲧⲉⲛⲟⲩⲱϣⲧ: ⲛⲧⲉⲛϯϩⲟ ⲉⲠⲭⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲛⲟⲩϯ.",
+          "Ⲁⲙⲱⲓⲛⲓ ⲛⲧⲉⲛⲟⲩⲱϣⲧ: ⲛⲧⲉⲛⲧⲱⲃϩ ⲙⲠⲭⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲟⲩⲣⲟ.",
+          "Ⲁⲙⲱⲓⲛⲓ ⲛⲧⲉⲛⲟⲩⲱϣⲧ: ⲛⲧⲉⲛⲧⲱⲃϩ ⲙⲠⲭⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲥⲱⲧⲏⲣ.",
+          "Ⲱ Ⲡⲉⲛϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲭⲣⲓⲥⲧⲟⲥ: Ⲡⲓⲗⲟⲅⲟⲥ ⲛⲧⲉ Ⲫⲛⲟⲩϯ Ⲡⲉⲛⲛⲟⲩϯ: ϩⲓⲧⲉⲛ ⲛⲓⲡⲣⲉⲥⲃⲓⲁ ⲛⲧⲉ ϯⲑⲉⲟⲧⲟⲕⲟⲥ ⲑⲁⲅⲓⲁ Ⲙⲁⲣⲓⲁ: ⲁⲣⲉϩ ⲉⲣⲟⲛ: ⲟⲩⲟϩ ⲙⲁⲛⲉⲛⲁⲣⲭⲏ ⲉⲑⲛⲁⲛⲉⲥ.",
+          "Ⲡⲓⲉϩⲱⲟⲩ ⲁϥⲥⲓⲛⲓ: ⲧⲉⲛϣⲉⲡϩⲙⲟⲧ ⲛⲧⲟⲧⲕ ⲱ Ⲡϭⲟⲓⲥ: ⲟⲩⲟϩ ⲧⲉⲛϯϩⲟ ⲉⲣⲟⲕ: ⲉⲑⲣⲉⲕⲁⲣⲉϩ ⲉⲣⲟⲛ ⲙⲫⲟⲟⲩ ⲁⲧϭⲛⲓ ⲛⲟⲃⲓ."
+        ],
+        "copticTransliterationEng": [
+          "Amwini ntenouwsht: ntentiho ePkhristos Pennouti.",
+          "Amwini ntenouwsht: ntentobh mPkhristos Penouro.",
+          "Amwini ntenouwsht: ntentobh mPkhristos Pensoter.",
+          "O Penchois Yesous Pkhristos: Pi-logos nte Phnouti Pennouti: hiten ni-presvia nte ti-theotokos thagia Maria: areh eron: ouoh ma-nen-arkhi ethnanes.",
+          "Pi-ehoou afsini: tenshep-hmot ntotk o Pchois: ouoh tentiho erok: ethrek-areh eron mphoou at-chni nobi."
+        ],
+        "copticTransliterationAra": [
+          "أمويني إنتينؤوشت: إنتينتيهو إبخرستوس بيننوتي.",
+          "أمويني إنتينؤوشت: إنتينطوبح إمبخرستوس بينؤرو.",
+          "أمويني إنتينؤوشت: إنتينطوبح إمبخرستوس بينسوتير.",
+          "يا بينشويس إيسوس بخرستوس: بي لوغوس إنتيه إفنوتي بيننوتي: هيتين ني بريسفيا إنتيه تي ثيؤطوكوس ثأجيا ماريا: أريح إيرون: أؤوه ما نين أرشي إثنانيس.",
+          "بي إيهوؤو إفسيني: تينشيب هموت إنطوتك أو إبشويس: أؤوه تينتيهو إيروك: إثريك أريح إيرون إمفوؤو أت شني نوبي."
+        ],
+        "english": [
+          "Come let us kneel down, let us ask Christ our God.",
+          "Come let us kneel down, let us beseech Christ our King.",
+          "Come let us kneel down, let us entreat Christ our Savior.",
+          "O Lord Jesus Christ, the Word of God, our God, through the intercessions of St. Mary, preserve us, and bring us to a good start. Have mercy on us according to Your will forever.",
+          "The night has passed away; we thank You, O Lord, and we ask You to keep us this day away from sin and deliver us."
+        ],
+        "arabic": [
+          "هلم بنا نسجد، نطلب من المسيح إلهنا.",
+          "هلم بنا نسجد، نتضرع إلى المسيح ملكنا.",
+          "هلم بنا نسجد، نتوسل إلى المسيح مخلصنا.",
+          "يا ربنا يسوع المسيح كلمة الله إلهنا، بشفاعة القديسة العذراء مريم احفظنا، وهب لنا بداية صالحة، وارحمنا كإرادتك إلى الأبد.",
+          "قد مضى الليل؛ ونشكرك يا رب، ونطلب منك أن تحفظنا في هذا اليوم بغير خطية وتخلصنا."
+        ]
+      }
+    }
+  ]
+}
