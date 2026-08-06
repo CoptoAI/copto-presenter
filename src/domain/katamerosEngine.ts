@@ -1,6 +1,27 @@
+/// <reference types="vite/client" />
 import moment, { Moment } from 'moment';
 import { getCopticDate } from '../lib/copticCalendar';
 import { KatamerosReadings, LiturgicalItem } from '../types';
+
+// Load static Synaxarium dataset modules dynamically
+const synaxariumModules = import.meta.glob('../content/data/synaxarium/*.json', { eager: true });
+
+function getSynaxariumDataForDate(copticMonthIndex: number, copticDay: number): any {
+  const fileKey = Object.keys(synaxariumModules).find((key) => {
+    const filename = key.split('/').pop() || '';
+    const match = filename.match(/^synaxarium_(\d{2})_([a-z]+)_(\d{2})\.json$/i);
+    if (!match) return false;
+    const mIdx = parseInt(match[1], 10);
+    const dNum = parseInt(match[3], 10);
+    return mIdx === copticMonthIndex && dNum === copticDay;
+  });
+
+  if (fileKey && synaxariumModules[fileKey]) {
+    const mod = synaxariumModules[fileKey] as any;
+    return mod.default || mod;
+  }
+  return null;
+}
 
 export function resolveDailyKatamerosReadings(dateInput: Date | Moment): KatamerosReadings {
   const m = moment(dateInput);
@@ -63,18 +84,29 @@ export function resolveDailyKatamerosReadings(dateInput: Date | Moment): Katamer
     }
   };
 
+  // Dynamically resolve Synaxarium reading from converted dataset
+  const synaxariumRaw = getSynaxariumDataForDate(coptic.copticMonthIndex, coptic.copticDay);
+
+  const synaxariumTitleAr = synaxariumRaw?.items?.[0]?.title?.arabic || `السنكسار: اليوم ${coptic.copticDay} من شهر ${coptic.copticMonthName}`;
+  const synaxariumTextAr = synaxariumRaw?.items?.[0]?.text?.arabic || [
+    `في مثل هذا اليوم من شهر ${coptic.copticMonthName}، تحيي الكنيسة المقدسة ذكرى القديسين والشهداء. بركة صلواتهم تكون معنا. أمين.`
+  ];
+  const synaxariumTextEng = synaxariumRaw?.items?.[0]?.text?.english || [
+    `On this day of ${copticDateString}, the Holy Church commemorates the saints and martyrs who gave their lives for Christ. May their holy prayers be with us. Amen.`
+  ];
+
   const synaxarium: LiturgicalItem = {
     id: `katameros-synaxarium-${dateString}`,
     role: 'reader',
     type: 'reading',
     title: {
-      english: 'The Synaxarium (Saint Commemoration)',
+      english: `The Synaxarium (${coptic.copticDay} ${coptic.copticMonthName})`,
       coptic: 'Ⲥⲩⲛⲁⲝⲁⲣⲓⲟⲛ',
-      arabic: 'السنكسار - أخبـار القديسين'
+      arabic: `السنكسار: ${synaxariumTitleAr}`
     },
     text: {
-      english: `On this day of ${copticDateString}, the Holy Church commemorates the saints and martyrs who gave their lives for Christ. May their holy prayers be with us. Amen.`,
-      arabic: `في مثل هذا اليوم من شهر ${coptic.copticMonthName}، تحيي الكنيسة المقدسة ذكرى القديسين والشهداء. بركة صلواتهم تكون معنا. أمين.`
+      english: synaxariumTextEng,
+      arabic: synaxariumTextAr
     }
   };
 

@@ -21,7 +21,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -p tsconfig.lib.json && vite build && npm run build:api",
+    "build": "npm run build:synaxarium && tsc -p tsconfig.lib.json && vite build && npm run build:api",
+    "build:synaxarium": "tsx scripts/convertSynaxariumDataset.ts",
     "build:api": "tsx scripts/generateApiDocs.ts",
     "preview": "vite preview",
     "test": "vitest run"

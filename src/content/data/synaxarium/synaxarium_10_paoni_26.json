@@ -1,0 +1,30 @@
+{
+  "id": "synaxarium_10_paoni_26",
+  "category": "KATAMEROS_READINGS",
+  "type": "reading",
+  "role": "reader",
+  "copticMonthIndex": 10,
+  "copticMonthName": "Paoni",
+  "copticDay": 26,
+  "title": {
+    "english": "Synaxarium: 26 Paoni",
+    "arabic": "السنكسار: اليوم 26 من شهر بؤونة"
+  },
+  "items": [
+    {
+      "id": "synaxarium_10_paoni_26-title",
+      "title": {
+        "arabic": "اليوم السادس والعشرون من شهر بؤونه المبارك"
+      },
+      "text": {
+        "english": [
+          "On this day of 26 Paoni, the Holy Coptic Church commemorates: اليوم السادس والعشرون من شهر بؤونه المبارك. May their holy prayers be with us all. Amen."
+        ],
+        "arabic": [
+          "تكريس كنيسة الملاك غبريال بجبل النقلون بالفيوم",
+          "في مثل هذا اليوم تم تكريس كنيسة رئيس الملائكة الجليل غبريال المبشر الكائنة بديره بجبل النقلون بالفيوم. ومازالت هذه الكنيسة قائمة حتى الآن. وكانت هذه المنطقة قديماً عامرة بالرهبان وبها أديرة كثيرة. شفاعة رئيس الملائكة الجليل جبرائيل فلتكن معنا. ولربنا المجد دائماً أبدياً آمين."
+        ]
+      }
+    }
+  ]
+}
