@@ -84,6 +84,7 @@ export type SectionCategory =
   | 'VESPER_PRAISES'
   | 'MIDNIGHT_PRAISES'
   | 'MORNING_PRAISES'
+  | 'KATAMEROS_READINGS'
   | 'PASCHA_GENERAL_FUNERAL_PRAYER';
 
 export interface PresenterSyncState {

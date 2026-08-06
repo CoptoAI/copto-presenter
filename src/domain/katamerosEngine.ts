@@ -1,25 +1,54 @@
 /// <reference types="vite/client" />
 import moment, { Moment } from 'moment';
+import fs from 'fs';
+import path from 'path';
 import { getCopticDate } from '../lib/copticCalendar';
 import { KatamerosReadings, LiturgicalItem } from '../types';
 
-// Load static Synaxarium dataset modules dynamically
-const synaxariumModules = import.meta.glob('../content/data/synaxarium/*.json', { eager: true });
+// Vite dynamic import glob (used in browser environment)
+let synaxariumModules: Record<string, any> = {};
+if (typeof import.meta !== 'undefined' && typeof (import.meta as any).glob === 'function') {
+  synaxariumModules = (import.meta as any).glob('../content/data/synaxarium/*.json', { eager: true });
+}
 
 function getSynaxariumDataForDate(copticMonthIndex: number, copticDay: number): any {
-  const fileKey = Object.keys(synaxariumModules).find((key) => {
-    const filename = key.split('/').pop() || '';
-    const match = filename.match(/^synaxarium_(\d{2})_([a-z]+)_(\d{2})\.json$/i);
-    if (!match) return false;
-    const mIdx = parseInt(match[1], 10);
-    const dNum = parseInt(match[3], 10);
-    return mIdx === copticMonthIndex && dNum === copticDay;
-  });
+  // 1. Browser Vite environment
+  if (Object.keys(synaxariumModules).length > 0) {
+    const fileKey = Object.keys(synaxariumModules).find((key) => {
+      const filename = key.split('/').pop() || '';
+      const match = filename.match(/^synaxarium_(\d{2})_([a-z]+)_(\d{2})\.json$/i);
+      if (!match) return false;
+      const mIdx = parseInt(match[1], 10);
+      const dNum = parseInt(match[3], 10);
+      return mIdx === copticMonthIndex && dNum === copticDay;
+    });
 
-  if (fileKey && synaxariumModules[fileKey]) {
-    const mod = synaxariumModules[fileKey] as any;
-    return mod.default || mod;
+    if (fileKey && synaxariumModules[fileKey]) {
+      const mod = synaxariumModules[fileKey];
+      return mod.default || mod;
+    }
   }
+
+  // 2. Node.js environment fallback
+  try {
+    const synaxariumDir = path.resolve(process.cwd(), 'src/content/data/synaxarium');
+    if (fs.existsSync(synaxariumDir)) {
+      const files = fs.readdirSync(synaxariumDir);
+      const matchedFile = files.find((f) => {
+        const match = f.match(/^synaxarium_(\d{2})_([a-z]+)_(\d{2})\.json$/i);
+        if (!match) return false;
+        return parseInt(match[1], 10) === copticMonthIndex && parseInt(match[3], 10) === copticDay;
+      });
+
+      if (matchedFile) {
+        const content = fs.readFileSync(path.join(synaxariumDir, matchedFile), 'utf8');
+        return JSON.parse(content);
+      }
+    }
+  } catch (err) {
+    // Node.js fs fallback error handling
+  }
+
   return null;
 }
 

@@ -18,6 +18,7 @@ export interface TranslationDictionary {
   groupLiturgy: string;
   groupAgpeya: string;
   groupPraises: string;
+  groupReadings: string;
   groupPascha: string;
 
   // Categories
@@ -39,6 +40,7 @@ export interface TranslationDictionary {
   catMidnightPraises: string;
   catVesperPraises: string;
   catMorningPraises: string;
+  catKatameros: string;
   catFuneralPrayer: string;
 
   // Presenter Controls
@@ -68,6 +70,7 @@ export const translations: Record<UiLanguage, TranslationDictionary> = {
     groupLiturgy: 'Holy Liturgy',
     groupAgpeya: 'Agpeya (Book of Hours)',
     groupPraises: 'Psalmodies & Praises',
+    groupReadings: 'Katameros & Readings',
     groupPascha: 'Holy Pascha',
 
     catVespers: 'Vespers Raising of Incense',
@@ -88,6 +91,7 @@ export const translations: Record<UiLanguage, TranslationDictionary> = {
     catMidnightPraises: 'Midnight Praises (Tasbeha)',
     catVesperPraises: 'Vesper Praises',
     catMorningPraises: 'Morning Praises',
+    catKatameros: 'Daily Katameros & Synaxarium',
     catFuneralPrayer: 'General Funeral Prayer',
 
     liveOutput: 'LIVE PROJECTOR OUTPUT',
@@ -114,6 +118,7 @@ export const translations: Record<UiLanguage, TranslationDictionary> = {
     groupLiturgy: 'القداس الإلهي',
     groupAgpeya: 'الأجبية (صلوات السواعي)',
     groupPraises: 'التسبحة والتسابيح',
+    groupReadings: 'القطمارس والسنكسار',
     groupPascha: 'البصخة المقدسة',
 
     catVespers: 'رفع بخور عشية',
@@ -134,6 +139,7 @@ export const translations: Record<UiLanguage, TranslationDictionary> = {
     catMidnightPraises: 'تسبحة نصف الليل',
     catVesperPraises: 'تسبحة عشية',
     catMorningPraises: 'تسبحة باكر',
+    catKatameros: 'القطمارس اليومي والسنكسار',
     catFuneralPrayer: 'الجناز العام',
 
     liveOutput: 'البث المباشر للشاشة',

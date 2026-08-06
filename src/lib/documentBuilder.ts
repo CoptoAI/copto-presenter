@@ -1,4 +1,5 @@
 import { LiturgicalSection, SectionCategory } from '../types';
+import { resolveDailyKatamerosReadings } from '../domain/katamerosEngine';
 
 export function getServiceTitle(category: SectionCategory): string {
   switch (category) {
@@ -20,13 +21,37 @@ export function getServiceTitle(category: SectionCategory): string {
     case 'MIDNIGHT_PRAISES': return 'Midnight Praises (Tasbeha)';
     case 'VESPER_PRAISES': return 'Vesper Praises';
     case 'MORNING_PRAISES': return 'Morning Praises';
+    case 'KATAMEROS_READINGS': return 'Daily Katameros & Synaxarium Readings';
     case 'PASCHA_GENERAL_FUNERAL_PRAYER': return 'Pascha - General Funeral Prayer';
     default: return 'Coptic Orthodox Service';
   }
 }
 
-export function buildLiturgicalService(category: SectionCategory): LiturgicalSection[] {
+export function buildLiturgicalService(category: SectionCategory, dateInput?: Date): LiturgicalSection[] {
   const serviceTitle = getServiceTitle(category);
+
+  if (category === 'KATAMEROS_READINGS') {
+    const katameros = resolveDailyKatamerosReadings(dateInput || new Date());
+    return [
+      {
+        id: 'katameros-section',
+        title: {
+          english: `Daily Katameros & Synaxarium (${katameros.copticDateString})`,
+          arabic: `القطمارس اليومي والسنكسار (${katameros.copticDateString})`
+        },
+        subtitle: katameros.copticDateString,
+        category: 'KATAMEROS_READINGS',
+        items: [
+          katameros.pauline,
+          katameros.catholic,
+          katameros.praxis,
+          katameros.synaxarium,
+          katameros.psalm,
+          katameros.gospel
+        ]
+      }
+    ];
+  }
 
   // Return formatted sections for dynamic rendering
   return [

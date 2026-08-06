@@ -11,7 +11,8 @@ import {
   Cross,
   Calendar,
   ChevronRight,
-  Search
+  Search,
+  BookMarked
 } from 'lucide-react';
 
 interface CategoryGroup {
@@ -42,8 +43,15 @@ export const Sidebar: React.FC = () => {
       ]
     },
     {
+      nameKey: 'groupReadings',
+      icon: <BookMarked className="w-4 h-4 text-amber-400" />,
+      items: [
+        { id: 'KATAMEROS_READINGS', labelKey: 'catKatameros' }
+      ]
+    },
+    {
       nameKey: 'groupAgpeya',
-      icon: <Clock className="w-4 h-4 text-amber-400" />,
+      icon: <Clock className="w-4 h-4 text-sky-300" />,
       items: [
         { id: 'AGPEYA_1ST_HOUR', labelKey: 'catAgpeya1' },
         { id: 'AGPEYA_3RD_HOUR', labelKey: 'catAgpeya3' },
