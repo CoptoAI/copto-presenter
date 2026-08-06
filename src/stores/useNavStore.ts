@@ -10,6 +10,8 @@ export interface NavState {
   fontSize: number; // font size in px
   copticFont: 'Avva Shenouda' | 'Coptic Standard' | 'Noto Sans Coptic';
   showCoptic: boolean;
+  showCopticEngTransliteration: boolean;
+  showCopticAraTransliteration: boolean;
   showEnglish: boolean;
   showArabic: boolean;
   theme: 'dark' | 'light' | 'projector' | 'sepia';
@@ -21,7 +23,7 @@ export interface NavState {
   toggleSidebar: () => void;
   setFontSize: (size: number) => void;
   setCopticFont: (font: 'Avva Shenouda' | 'Coptic Standard' | 'Noto Sans Coptic') => void;
-  toggleLanguage: (lang: 'coptic' | 'english' | 'arabic') => void;
+  toggleLanguage: (lang: 'coptic' | 'copticEng' | 'copticAra' | 'english' | 'arabic') => void;
   setTheme: (theme: 'dark' | 'light' | 'projector' | 'sepia') => void;
   setActiveView: (view: 'app' | 'operator' | 'projector') => void;
   initOfflinePreferences: () => Promise<void>;
@@ -35,6 +37,8 @@ export const useNavStore = create<NavState>((set, get) => ({
   fontSize: 24,
   copticFont: 'Avva Shenouda',
   showCoptic: true,
+  showCopticEngTransliteration: false,
+  showCopticAraTransliteration: false,
   showEnglish: true,
   showArabic: true,
   theme: 'dark',
@@ -72,6 +76,8 @@ export const useNavStore = create<NavState>((set, get) => ({
     set((state) => {
       const next = {
         showCoptic: lang === 'coptic' ? !state.showCoptic : state.showCoptic,
+        showCopticEngTransliteration: lang === 'copticEng' ? !state.showCopticEngTransliteration : state.showCopticEngTransliteration,
+        showCopticAraTransliteration: lang === 'copticAra' ? !state.showCopticAraTransliteration : state.showCopticAraTransliteration,
         showEnglish: lang === 'english' ? !state.showEnglish : state.showEnglish,
         showArabic: lang === 'arabic' ? !state.showArabic : state.showArabic
       };

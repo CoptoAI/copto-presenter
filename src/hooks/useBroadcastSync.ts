@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { usePresenterStore } from '../stores/usePresenterStore';
 import { PresenterSyncState } from '../types';
 
-const CHANNEL_NAME = 'orthodox_presenter_sync';
+const CHANNEL_NAME = 'copto_presenter_sync';
 
 export function useBroadcastSync(role: 'operator' | 'projector') {
   const store = usePresenterStore();
@@ -52,6 +52,8 @@ export function useBroadcastSync(role: 'operator' | 'projector') {
       category: store.category,
       fontSize: store.fontSize,
       showCoptic: store.showCoptic,
+      showCopticTransliterationEng: store.showCopticTransliterationEng,
+      showCopticTransliterationAra: store.showCopticTransliterationAra,
       showEnglish: store.showEnglish,
       showArabic: store.showArabic,
       theme: store.theme,

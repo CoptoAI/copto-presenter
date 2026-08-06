@@ -23,6 +23,8 @@ export const Header: React.FC = () => {
     copticFont,
     setCopticFont,
     showCoptic,
+    showCopticEngTransliteration,
+    showCopticAraTransliteration,
     showEnglish,
     showArabic,
     toggleLanguage,
@@ -70,7 +72,7 @@ export const Header: React.FC = () => {
           <BookOpen className="w-6 h-6 text-sky-400" />
           <div>
             <h1 className="font-bold text-base tracking-wide hidden sm:block bg-gradient-to-r from-sky-400 to-amber-300 bg-clip-text text-transparent">
-              ORTHODOX PRESENTER
+              COPTO PRESENTER
             </h1>
             <span className="hidden md:flex items-center gap-1 text-[10px] font-semibold text-amber-400/90">
               <Sparkles className="w-3 h-3 text-amber-400" />
@@ -80,39 +82,61 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Language Visibility Controls & Font Family Selector */}
+      {/* Language Visibility Controls (5 Options) */}
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-1 bg-slate-900/60 p-1 rounded-xl border border-slate-700/50">
           <button
             onClick={() => toggleLanguage('coptic')}
-            className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition ${
+            className={`px-2 py-1 text-[11px] font-semibold rounded-lg transition ${
               showCoptic
                 ? 'bg-sky-500 text-white shadow'
                 : 'text-slate-400 hover:text-white'
             }`}
-            title="Toggle Coptic Text"
+            title="Toggle Coptic Script"
           >
             COP
           </button>
           <button
+            onClick={() => toggleLanguage('copticEng')}
+            className={`px-2 py-1 text-[11px] font-semibold rounded-lg transition ${
+              showCopticEngTransliteration
+                ? 'bg-sky-500 text-white shadow'
+                : 'text-slate-400 hover:text-white'
+            }`}
+            title="Toggle Coptic Transliteration in English"
+          >
+            COP-EN
+          </button>
+          <button
+            onClick={() => toggleLanguage('copticAra')}
+            className={`px-2 py-1 text-[11px] font-semibold rounded-lg transition ${
+              showCopticAraTransliteration
+                ? 'bg-sky-500 text-white shadow'
+                : 'text-slate-400 hover:text-white'
+            }`}
+            title="Toggle Coptic Transliteration in Arabic"
+          >
+            COP-AR
+          </button>
+          <button
             onClick={() => toggleLanguage('english')}
-            className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition ${
+            className={`px-2 py-1 text-[11px] font-semibold rounded-lg transition ${
               showEnglish
                 ? 'bg-sky-500 text-white shadow'
                 : 'text-slate-400 hover:text-white'
             }`}
-            title="Toggle English Text"
+            title="Toggle English Translation"
           >
             ENG
           </button>
           <button
             onClick={() => toggleLanguage('arabic')}
-            className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition ${
+            className={`px-2 py-1 text-[11px] font-semibold rounded-lg transition ${
               showArabic
                 ? 'bg-amber-500 text-white shadow'
                 : 'text-slate-400 hover:text-white'
             }`}
-            title="Toggle Arabic Text"
+            title="Toggle Arabic Translation"
           >
             ARA
           </button>

@@ -18,6 +18,8 @@ export const usePresenterStore = create<PresenterState>((set) => ({
   category: 'LITURGY_OF_THE_WORD',
   fontSize: 32,
   showCoptic: true,
+  showCopticTransliterationEng: false,
+  showCopticTransliterationAra: false,
   showEnglish: true,
   showArabic: true,
   theme: 'projector',

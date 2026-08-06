@@ -1,10 +1,23 @@
 export interface MultilingualText {
   coptic?: string | string[];
+  copticTransliterationEng?: string | string[];
+  copticTransliterationAra?: string | string[];
   english?: string | string[];
   arabic?: string | string[];
   eng?: string | string[];
   ara?: string | string[];
   cop?: string | string[];
+}
+
+export interface KatamerosReadings {
+  dateString: string;
+  copticDateString: string;
+  pauline: LiturgicalItem;
+  catholic: LiturgicalItem;
+  praxis: LiturgicalItem;
+  synaxarium: LiturgicalItem;
+  psalm: LiturgicalItem;
+  gospel: LiturgicalItem;
 }
 
 export interface LiturgicalItem {
@@ -29,8 +42,8 @@ export interface LiturgicalSection {
 export interface CopticMonth {
   name: string;
   index: number;
-  month: number; // Gregorian month baseline
-  day: number;   // Gregorian start day
+  month: number;
+  day: number;
   leap: boolean;
 }
 
@@ -79,6 +92,8 @@ export interface PresenterSyncState {
   category: SectionCategory;
   fontSize: number;
   showCoptic: boolean;
+  showCopticTransliterationEng: boolean;
+  showCopticTransliterationAra: boolean;
   showEnglish: boolean;
   showArabic: boolean;
   theme: 'dark' | 'light' | 'projector' | 'sepia';

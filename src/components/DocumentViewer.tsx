@@ -5,7 +5,15 @@ import { buildLiturgicalService } from '../lib/documentBuilder';
 import { LiturgicalItem } from '../types';
 
 export const DocumentViewer: React.FC = () => {
-  const { category, fontSize, showCoptic, showEnglish, showArabic } = useNavStore();
+  const {
+    category,
+    fontSize,
+    showCoptic,
+    showCopticEngTransliteration,
+    showCopticAraTransliteration,
+    showEnglish,
+    showArabic
+  } = useNavStore();
   const { activeSlideIndex, setActiveSlide, nextSlide, prevSlide } = usePresenterStore();
 
   const sections = useMemo(() => buildLiturgicalService(category), [category]);
@@ -89,29 +97,52 @@ export const DocumentViewer: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Multilingual Text Content */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {/* Coptic Column */}
+                  {/* Multilingual Text Content Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {/* Coptic Script Column */}
                     {showCoptic && item.text?.coptic && (
                       <div className="coptic-text text-sky-200 leading-relaxed space-y-2">
+                        <span className="text-[10px] uppercase font-mono text-sky-400 block font-bold">Coptic</span>
                         {Array.isArray(item.text.coptic)
                           ? item.text.coptic.map((line, i) => <p key={i}>{line}</p>)
                           : <p>{item.text.coptic}</p>}
                       </div>
                     )}
 
-                    {/* English Column */}
+                    {/* Coptic Transliteration in English */}
+                    {showCopticEngTransliteration && item.text?.copticTransliterationEng && (
+                      <div className="text-emerald-300 leading-relaxed space-y-2 italic">
+                        <span className="text-[10px] uppercase font-mono text-emerald-400 block font-bold not-italic">Coptic (English Letters)</span>
+                        {Array.isArray(item.text.copticTransliterationEng)
+                          ? item.text.copticTransliterationEng.map((line, i) => <p key={i}>{line}</p>)
+                          : <p>{item.text.copticTransliterationEng}</p>}
+                      </div>
+                    )}
+
+                    {/* Coptic Transliteration in Arabic */}
+                    {showCopticAraTransliteration && item.text?.copticTransliterationAra && (
+                      <div className="arabic-text text-emerald-300 leading-relaxed space-y-2">
+                        <span className="text-[10px] uppercase font-mono text-emerald-400 block font-bold">قبطي بالحروف العربية</span>
+                        {Array.isArray(item.text.copticTransliterationAra)
+                          ? item.text.copticTransliterationAra.map((line, i) => <p key={i}>{line}</p>)
+                          : <p>{item.text.copticTransliterationAra}</p>}
+                      </div>
+                    )}
+
+                    {/* English Translation */}
                     {showEnglish && item.text?.english && (
                       <div className="text-slate-100 leading-relaxed space-y-2">
+                        <span className="text-[10px] uppercase font-mono text-slate-400 block font-bold">English</span>
                         {Array.isArray(item.text.english)
                           ? item.text.english.map((line, i) => <p key={i}>{line}</p>)
                           : <p>{item.text.english}</p>}
                       </div>
                     )}
 
-                    {/* Arabic Column */}
+                    {/* Arabic Translation */}
                     {showArabic && item.text?.arabic && (
                       <div className="arabic-text text-amber-200 leading-relaxed space-y-2">
+                        <span className="text-[10px] uppercase font-mono text-amber-400 block font-bold">العربية</span>
                         {Array.isArray(item.text.arabic)
                           ? item.text.arabic.map((line, i) => <p key={i}>{line}</p>)
                           : <p>{item.text.arabic}</p>}

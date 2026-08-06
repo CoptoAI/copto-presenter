@@ -6,11 +6,19 @@ export function normalizeMultilingualText(raw: any): MultilingualText {
   const english = raw.english || raw.eng || (typeof raw === 'string' ? raw : undefined);
   const arabic = raw.arabic || raw.ara;
   const coptic = raw.coptic || raw.cop;
+  const copticTransliterationEng = raw.copticTransliterationEng || raw.copEng || raw.transliterationEng;
+  const copticTransliterationAra = raw.copticTransliterationAra || raw.copAra || raw.transliterationAra;
 
   return {
     english: Array.isArray(english) ? english.join(' ') : english,
     arabic: Array.isArray(arabic) ? arabic.join(' ') : arabic,
-    coptic: Array.isArray(coptic) ? coptic.join(' ') : coptic
+    coptic: Array.isArray(coptic) ? coptic.join(' ') : coptic,
+    copticTransliterationEng: Array.isArray(copticTransliterationEng)
+      ? copticTransliterationEng.join(' ')
+      : copticTransliterationEng,
+    copticTransliterationAra: Array.isArray(copticTransliterationAra)
+      ? copticTransliterationAra.join(' ')
+      : copticTransliterationAra
   };
 }
 

@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && npm run build:api",
+    "build": "tsc -p tsconfig.lib.json && vite build && npm run build:api",
     "build:api": "tsx scripts/generateApiDocs.ts",
     "preview": "vite preview",
     "test": "vitest run"
