@@ -1,0 +1,22 @@
+{
+  "deacon": {
+    "eng": "Deacon",
+    "cop": "Ⲡⲓⲇⲓⲁⲕⲱⲛ",
+    "ara": "الشماس"
+  },
+  "priest": {
+    "eng": "Priest",
+    "cop": "Ⲡⲓⲟⲩⲏⲃ",
+    "ara": "الكاهن"
+  },
+  "people": {
+    "eng": "People",
+    "cop": "Ⲡⲓⲗⲁⲟⲥ",
+    "ara": "الشعب"
+  },
+  "reader": {
+    "eng": "Reader",
+    "cop": "Ⲡⲓⲁ̀ⲛⲁⲅⲛⲱⲥⲧⲏⲥ",
+    "ara": "القارئ"
+  }
+}

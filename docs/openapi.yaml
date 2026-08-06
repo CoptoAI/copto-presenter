@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: Copto Presenter Liturgical API
+  description: Official Open API Specification for Coptic Orthodox Liturgical Services, Agpeya, Tasbeha, and Coptic Calendar calculations by CoptoAI.
+  version: 1.0.0
+  contact:
+    name: CoptoAI Development Team
+    url: https://github.com/CoptoAI/copto-presenter
+servers:
+  - url: https://coptoai.github.io/copto-presenter/api/v1
+    description: Production GitHub Pages Static CDN API
+paths:
+  /calendar/today.json:
+    get:
+      summary: Get Today's Coptic Date & Liturgical Season
+      description: Returns the current Coptic month, day, year, day of the week, and active liturgical season/tune (Joyful, Fasting, Pascha, Annual).
+      responses:
+        '200':
+          description: Coptic date payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarTodayResponse'
+  /services/list.json:
+    get:
+      summary: List All Available Liturgical Services
+      description: Returns a catalog of available Coptic services (Liturgies, Agpeya hours, Tasbeha, Pascha).
+      responses:
+        '200':
+          description: List of service categories
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServicesListResponse'
+  /services/{category}.json:
+    get:
+      summary: Get Full Liturgical Service Document
+      description: Returns compiled multilingual liturgical items for the specified category.
+      parameters:
+        - name: category
+          in: path
+          required: true
+          schema:
+            type: string
+            example: LITURGY_OF_THE_WORD
+      responses:
+        '200':
+          description: Service items payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceCategoryResponse'
+
+components:
+  schemas:
+    CalendarTodayResponse:
+      type: object
+      properties:
+        gregorianDate:
+          type: string
+          example: '2026-08-06'
+        copticDate:
+          type: object
+          properties:
+            day:
+              type: integer
+              example: 30
+            month:
+              type: string
+              example: Mesore
+            year:
+              type: integer
+              example: 1742
+            dayOfWeek:
+              type: string
+              example: Thursday
+        season:
+          type: object
+          properties:
+            name:
+              type: string
+              example: Holy Nativity Fast
+            rite:
+              type: string
+              example: fasting
+            isFast:
+              type: boolean
+            isFeast:
+              type: boolean
+
+    ServicesListResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+        services:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              title:
+                type: string
+              endpoint:
+                type: string
+
+    ServiceCategoryResponse:
+      type: object
+      properties:
+        category:
+          type: string
+        title:
+          type: string
+        sections:
+          type: array
+          items:
+            type: object

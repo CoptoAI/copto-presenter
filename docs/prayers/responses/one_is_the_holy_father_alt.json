@@ -1,0 +1,25 @@
+{
+  "visible": "false",
+  "title": {
+    "cop": "",
+    "eng": "One is the Holy Father",
+    "ara": ""
+  },
+  "items": [
+      {
+        "user": "people",
+        "text": {
+          "cop": [
+            "Ⲓⲥ Ⲡⲁⲧⲏⲣ ⲁ̀ⲅⲓⲟⲥ: ⲓⲥ ⲟ̀ Ⲩⲓⲟⲥ ⲁ̀ⲅⲓⲟⲥ: ⲉⲛ Ⲡⲛⲉⲩⲙⲁ ⲁ̀ⲅⲓⲟⲛ: ⲁ̀ⲙⲏⲛ."
+          ],
+          "eng": [
+            "One is the Holy Father. One is the Holy Son. One is the Holy Spirit. Amen."
+          ],
+          "ara": [
+            ""
+          ]
+        }
+      }
+      
+  ]
+}

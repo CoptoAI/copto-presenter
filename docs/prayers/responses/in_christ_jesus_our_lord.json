@@ -1,0 +1,94 @@
+{
+  "title": {
+    "cop": "",
+    "eng": "",
+    "ara": ""
+  },
+  "items": [
+    {
+      "user": "people",
+      "text": {
+        "cop": [
+          "Ϧⲉⲛ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲉⲛϭⲟⲓⲥ"
+        ],
+        "eng": [
+          "In Christ Jesus our Lord."
+        ],
+        "ara": [
+          ""
+        ]
+      }
+    },
+    {
+      "user": "deacon",
+      "text": {
+        "cop": [
+          "Ⲧⲁⲥ ⲕⲉⲫⲁⲗⲁⲥ ⲩ̀ⲙⲱⲛ ⲧⲱ Ⲕⲩⲣⲓⲱ ⲕ̀ⲗⲓⲛⲁⲧⲉ."
+        ],
+        "eng": [
+          "Bow your heads to the Lord."
+        ],
+        "ara": [
+          ""
+        ]
+      }
+    },
+    {
+        "user": "people",
+        "text": {
+          "cop": [
+            "Ⲉⲛⲓⲱⲡⲓⲟⲛ ⲥⲟⲩ Ⲕⲩⲣⲓⲉ."
+          ],
+          "eng": [
+            "Before You, O Lord."
+          ],
+          "ara": [
+            ""
+          ]
+        }
+      },
+      {
+        "user": "deacon",
+        "text": {
+          "cop": [
+            "Ⲡⲣⲟⲥⲭⲱⲙⲉⲛ Ⲑⲉⲟⲩ ⲙⲉⲧⲁⲫⲟⲃⲟⲩ: ⲁ̀ⲙⲏⲛ."
+          ],
+          "eng": [
+            "Let us attend in the fear of God. Amen"
+          ],
+          "ara": [
+            ""
+          ]
+        }
+      },
+      {
+        "user": "priest",
+        "text": {
+          "cop": [
+            "Ⲓⲣⲏⲛⲏ ⲡⲁⲥⲓ."
+          ],
+          "eng": [
+            "Peace be with all."
+          ],
+          "ara": [
+            ""
+          ]
+        }
+      },
+      {
+        "user": "people",
+        "text": {
+          "cop": [
+            "Ⲕⲉ ⲧⲱ ⲡ̀ⲛⲉⲩⲙⲁⲧⲓ ⲥⲟⲩ."
+          ],
+          "eng": [
+            "And with your spirit."
+          ],
+          "ara": [
+            ""
+          ]
+        }
+      }
+      
+  ]
+}

@@ -1,0 +1,10 @@
+node_modules
+dist
+*.mjs
+*.log
+.DS_Store
+js/bundle.js
+js/bundle.min.js
+*.swp
+*~
+.vscode/settings.json

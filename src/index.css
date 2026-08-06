@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Coptic&display=swap');
+
+/* Traditional Coptic Fonts */
+@font-face {
+  font-family: 'Avva Shenouda';
+  src: url('/fonts/AvvaShenouda.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Coptic Standard';
+  src: url('/fonts/CopticStandard.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-coptic: 'Avva Shenouda', 'Coptic Standard', 'Noto Sans Coptic', 'Noto Sans', sans-serif;
+  --font-arabic: 'Noto Sans Arabic', sans-serif;
+  
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --bg-hover: #334155;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-gold: #fbbf24;
+  --border: #334155;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-hover: #f1f5f9;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --accent: #0284c7;
+  --accent-gold: #d97706;
+  --border: #e2e8f0;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='projector'] {
+  --bg-main: #000000;
+  --bg-card: #111111;
+  --bg-hover: #222222;
+  --text-main: #ffffff;
+  --text-muted: #cccccc;
+  --accent: #00e5ff;
+  --accent-gold: #ffd700;
+  --border: #333333;
+  --shadow: 0 0 30px rgba(0,0,0,0.9);
+}
+
+[data-theme='sepia'] {
+  --bg-main: #fbf0d9;
+  --bg-card: #f3e5ab;
+  --bg-hover: #e8d79b;
+  --text-main: #432818;
+  --text-muted: #7f5539;
+  --accent: #b07d62;
+  --accent-gold: #b08968;
+  --border: #ddb892;
+  --shadow: 0 10px 20px rgba(67, 40, 24, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+.coptic-text {
+  font-family: var(--font-coptic);
+  direction: ltr;
+}
+
+.arabic-text {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  text-align: right;
+}
+
+.glass-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}

@@ -1,0 +1,49 @@
+{
+  "name": "@copto/presenter",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "CoptoAI (https://github.com/CoptoAI)",
+  "description": "Copto Presenter - Coptic Orthodox Liturgical Presentation Platform & API by CoptoAI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CoptoAI/copto-presenter.git"
+  },
+  "homepage": "https://coptoai.github.io/copto-presenter",
+  "bugs": {
+    "url": "https://github.com/CoptoAI/copto-presenter/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && npm run build:api",
+    "build:api": "tsx scripts/generateApiDocs.ts",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "js-cookie": "^3.0.5",
+    "lucide-react": "^0.300.0",
+    "moment": "^2.30.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vite-plugin-pwa": "^0.17.5",
+    "vitest": "^1.2.1"
+  }
+}
