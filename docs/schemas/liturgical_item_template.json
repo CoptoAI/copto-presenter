@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CoptoPresenterUniversalLiturgicalItem",
+  "description": "Universal Copto Presenter JSON Schema for ALL Coptic Liturgies, Agpeya, Tasbeha, Katameros, Pascha, Sacraments, and Rites",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "liturgy_basil_reconciliation_prayer"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "OFFERING_OF_THE_LAMB",
+        "LITURGY_OF_THE_WORD",
+        "ST_BASIL_LITURGY_OF_THE_FAITHFUL",
+        "ST_GREGORY_LITURGY_OF_THE_FAITHFUL",
+        "ST_CYRIL_LITURGY_OF_THE_FAITHFUL",
+        "DISTRIBUTION",
+        "VESPERS",
+        "MATINS",
+        "AGPEYA_1ST_HOUR",
+        "AGPEYA_3RD_HOUR",
+        "AGPEYA_6TH_HOUR",
+        "AGPEYA_9TH_HOUR",
+        "AGPEYA_11TH_HOUR",
+        "AGPEYA_12TH_HOUR",
+        "AGPEYA_VEIL",
+        "MIDNIGHT_PRAISES",
+        "VESPER_PRAISES",
+        "MORNING_PRAISES",
+        "KATAMEROS_READINGS",
+        "PASCHA_GENERAL_FUNERAL_PRAYER",
+        "PASCHA_HOLY_WEEK",
+        "SACRAMENT_BAPTISM",
+        "SACRAMENT_MATRIMONY",
+        "SACRAMENT_UNCTION_SICK"
+      ],
+      "example": "ST_BASIL_LITURGY_OF_THE_FAITHFUL"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "prayer",
+        "hymn",
+        "psalm",
+        "gospel",
+        "reading",
+        "litany",
+        "absolution",
+        "doxology",
+        "theotokia",
+        "psali",
+        "canon",
+        "exposition",
+        "response",
+        "rubric"
+      ],
+      "example": "prayer"
+    },
+    "role": {
+      "type": "string",
+      "enum": ["all", "priest", "deacon", "people", "reader", "patriarch", "bishop"],
+      "example": "priest"
+    },
+    "title": {
+      "type": "object",
+      "properties": {
+        "coptic": { "type": "string", "example": "Ⲫⲛⲟⲩϯ ⲡⲓⲛⲓϣϯ ⲛϣⲁⲉⲛⲉϩ" },
+        "copticTransliterationEng": { "type": "string", "example": "Phnouti pi-nishti nsha-eneh" },
+        "copticTransliterationAra": "إفنوتي بي نيشتي إنشا إينيه",
+        "english": { "type": "string", "example": "Prayer of Reconciliation (St. Basil)" },
+        "arabic": { "type": "string", "example": "صلاة الصلح (القديس باسيليوس)" }
+      }
+    },
+    "rubric": {
+      "type": "object",
+      "properties": {
+        "english": { "type": "string", "example": "The priest says the Prayer of Reconciliation:" },
+        "arabic": { "type": "string", "example": "يقول الكاهن صلاة الصلح:" }
+      }
+    },
+    "text": {
+      "type": "object",
+      "properties": {
+        "coptic": {
+          "type": "array",
+          "items": { "type": "string" },
+          "example": [
+            "Ⲫⲛⲟⲩϯ ⲡⲓⲛⲓϣϯ ⲛϣⲁⲉⲛⲉϩ: ⲫⲏⲉⲧⲁϥⲑⲁⲙⲓⲟ ⲙⲡⲓⲣⲱⲙⲓ ⲉϩⲣⲏⲓ ⲉϫⲉⲛ ⲙⲉⲧⲁⲧⲧⲁⲕⲟ."
+          ]
+        },
+        "copticTransliterationEng": {
+          "type": "array",
+          "items": { "type": "string" },
+          "example": [
+            "Phnouti pi-nishti nsha-eneh: phi-etaf-thamio mpi-romi ehrii ejen met-at-tako."
+          ]
+        },
+        "copticTransliterationAra": {
+          "type": "array",
+          "items": { "type": "string" },
+          "example": [
+            "إفنوتي بي نيشتي إنشا إينيه: في إتاف ثاميو إمبي رومي إهريي إيجين ميت أت تاكو."
+          ]
+        },
+        "english": {
+          "type": "array",
+          "items": { "type": "string" },
+          "example": [
+            "O God the Great, the Eternal, who created man in incorruption."
+          ]
+        },
+        "arabic": [
+          "يا الله العظيم الأبدي، الذي خلق الإنسان على غير فساد."
+        ]
+      },
+      "required": ["english", "arabic"]
+    }
+  },
+  "required": ["type", "text"]
+}
